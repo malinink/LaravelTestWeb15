@@ -5,7 +5,7 @@
 @section('content')
     
     <p>  China - Store countries!</p>
-    {!!Form::open(['route' => 'index','method'=>'GET'])!!}
+    {!!Form::open(['route' => 'countries.index','method'=>'GET'])!!}
     {!!Form::submit('Back')!!}
     {!!Form::close()!!}
 @stop

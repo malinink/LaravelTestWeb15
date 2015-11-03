@@ -2,48 +2,72 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
+use App\Countries;
+use Request;
 
 
 class CountriesController extends BaseController{
  
  public function index()
 {
-     
-        return view('Countries/Countries');
-    
+        $countries = Countries::all();
+        return view('Countries/Countries',['countries' => $countries]);
+        
 }
+
 public function create()
 {
-     
-        return view('Countries/Countries_create');
+    return view('Countries/Countries_create');
     
 }
 
 public function store()
 {
-    
-         return view('Countries/Countries_store');
+         $new = Request::only('identity', 'name', 'nameanime','language', 'area');
+         $country = new Countries();
+         $country->identity = $new['identity'];
+         $country->name = $new['name'];
+         $country->nameanime = $new['nameanime'];
+         $country->language = $new['language'];
+         $country->area = $new['area'];
+         $country->save();
+        
+         return redirect('countries');  
+}
+
+public function show($id)
+{
+       $country = Countries::find($id);
+       return view('Countries/Countries_show')->with('country',$country);
+   
+}
+
+public function edit($id)
+{
+         $country = Countries::find($id);
+         return view('Countries.Countries_edit')->with('country',$country);
     
 }
-public function show()
+
+public function update($id)
 {
+         $new = Request::only('identity', 'name', 'nameanime','language', 'area');
+         $country = Countries::find($id);
+         $country->identity = $new['identity'];
+         $country->name = $new['name'];
+         $country->nameanime = $new['nameanime'];
+         $country->language = $new['language'];
+         $country->area = $new['area'];
+         $country->save();
+      
+        return redirect('countries');
+}
      
-         return view('Countries/Countries_show');
-   
-}public function edit()
+public function destroy($id)
 {
-     
-         return view('Countries/Countries_edit');
-    
-}public function update()
-{
-     
-         return view('Countries/Countries_update');
-     
-}public function destroy()
-{
-     
-         return view('Countries/Countries_destroy');
+        $country=Countries::find($id);
+        $country->delete();
+        return redirect('countries');
      
 }
  

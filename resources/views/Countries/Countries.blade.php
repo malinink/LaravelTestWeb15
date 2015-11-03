@@ -4,31 +4,43 @@
 
 @section('content')
     
-    <p>  All what you can do with countries!</p>
-    {!!Form::open(['route' => 'create','method' => 'GET'])!!}
-    {!!Form::submit('Create')!!}
-    {!!Form::close()!!}
+<h2> Let's discover something new about countries!</h2>
     
-    {!!Form::open(['route' => 'store','method'=>'POST'])!!}
-    {!!Form::submit('Store')!!}
-    {!!Form::close()!!}
-    
-    {!!Form::open(['route' => array('show','id'=>1),'method'=>'GET'])!!}
-    {!!Form::submit('Show')!!}
-    {!!Form::close()!!}
-    
-    {!!Form::open(['route' => array('edit','id'=>1),'method'=>'GET'])!!}
-    {!!Form::submit('Edit')!!}
-    {!!Form::close()!!}
-    
-    {!!Form::open(['route' => array('update','id'=>1),'method'=>'POST'])!!}
-    {!!Form::submit('Update')!!}
-    {!!Form::close()!!}
-    
-    {!!Form::open(['route' => array('destroy','id'=>1),'method'=>'DELETE'])!!}
-    {!!Form::submit('Destroy')!!}
-    {!!Form::close()!!}
-    
+<br>
+<br>
+{!! link_to_action('CountriesController@create', 'Create', [], ['class' => 'btn btn-default', 'style' => 'float:left']) !!}
+<br>
+<br>
+<br>
+<br>
+
+<table class = 'table'>  
+   <tr>
+        <th> Number </th>
+        <th> Id </th>
+        <th> Name of Country </th>
+        <th> Name in Anime </th>
+        <th> Language </th>
+        <th> Area </th>
+        <th>  </th>
+    </tr>
+
+@foreach($countries as $country)
+<tr>
+    <td> {!! $country['identity'] !!} </td>
+    <td> {!! link_to_action('CountriesController@show', $country['identity'], [$country['id']]) !!} </td>
+    <td> {!! $country['name'] !!} </td>
+    <td> {!! $country['nameanime'] !!} </td>
+    <td> {!! $country['language'] !!} </td>
+    <td> {!! $country['area'] !!} </td>
+    <td> {!! link_to_action('CountriesController@edit', 'Edit', [$country['id']], ['class' => 'btn btn-default btn-sm']) !!} </td>
+    <td> {!! Form::open(['action' => ['CountriesController@destroy', $country['id']], 'method'=>'DELETE']) !!}
+         {!! Form::submit('Delete', ['class' => 'btn btn-default btn-sm']) !!}
+         {!! Form::close() !!} </td>
+</tr>
+@endforeach
+</table>
     
 @stop
+
 
