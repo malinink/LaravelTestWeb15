@@ -29,6 +29,10 @@
     <exclude-pattern>app/Http/Controllers/CarsController.php</exclude-pattern>
     <!-- */ that should be commented after travis-ci connected --> 
     
+    <!-- that should be commented after travis-ci connected // -->
+    
+    <!-- // to that string -->
+
     <!-- default parameters -->
     <arg name="report" value="summary"/>
     <arg name="standard" value="PSR2"/>
