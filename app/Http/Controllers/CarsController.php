@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use App\Car;
+use Request;
+use Illuminate\Support\Facades\Input;
 
 /**
  * Description of Cars
@@ -14,7 +15,8 @@ class CarsController extends Controller
 {
     public function index()
     {
-        return view('cars.index');
+        $cars = Car::all();
+        return view('cars.index', ['cars' => $cars]);
     }
     public function create()
     {
@@ -22,22 +24,31 @@ class CarsController extends Controller
     }
     public function store()
     {
-        return view('cars.store');
+        $new = Request::only('identity', 'brand', 'model', 'color');
+        $car = Car::create($new);
+        return redirect('cars');
     }
-    public function show()
+    public function show($id)
     {
-        return view('cars.show');
+        $car = Car::find($id);
+        return view('cars.show')->with(['car' => $car]);
     }
-    public function edit()
+    public function edit($id)
     {
-        return view('cars.edit');
+        $car = Car::find($id);
+        return view('cars.edit')->with(['car' => $car]);
     }
-    public function update()
+    public function update($id)
     {
-        return view('cars.update');
+        $new = Request::only('identity', 'brand', 'model', 'color');
+        $old = Car::find($id);
+        $old->update($new);
+        return redirect('cars');
     }
-    public function destroy()
+    public function destroy($id)
     {
-        return view('cars.destroy');
+        $car = Car::find($id);
+        $car->delete();
+        return redirect('cars');
     }
 }
