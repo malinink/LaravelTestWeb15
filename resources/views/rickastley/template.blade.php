@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<head>
+    <title>Never gonna give you up</title>
+</head>
 <body>
 <style type="text/css">
     .container {
-        padding: 10px;
+        padding: 30px;
         float: left;
     }
 </style>

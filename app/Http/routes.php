@@ -106,6 +106,37 @@ Route::get('computers/{id}/edit', 'ComputersController@edit');
 Route::post('computers/{id}','ComputersController@update');
 Route::delete('computers/{id}', 'ComputersController@destroy');
 
+
+Route::get('sports/',[
+    'uses' => 'Sports@index',
+    'as' => 'sports.index'
+]);
+Route::get('sports/create',[
+    'uses' => 'Sports@create',
+    'as' => 'sports.create'
+]);
+Route::get('sports/{id}/edit',[
+    'uses' => 'Sports@edit',
+    'as' => 'sports.edit'
+]);
+Route::get('sports/{id}',[
+    'uses' => 'Sports@show',
+    'as' => 'sports.show'
+]);
+Route::delete('sports/{id}',[
+    'uses' => 'Sports@destroy',
+    'as' => 'sports.destroy'
+]);
+Route::put('sports/{id}',[
+    'uses' => 'Sports@update',
+    'as' => 'sports.update'
+]);
+Route::post('sports/',[
+    'uses' => 'Sports@store',
+    'as' => 'sports.store'
+]);
+
+
 Route::get('/cars', [
     'as'    => 'index',
     'uses'  => 'CarsController@index'
@@ -157,7 +188,7 @@ Route::group(['prefix' => 'rickastley'], function () {
         'as' => 'rickastley.update', 'uses' => 'RickastleyController@update'
     ]);
     Route::delete('{id}', [
-        'as' => 'rickastley.delete', 'uses' => 'RickastleyController@delete'
+        'as' => 'rickastley.destroy', 'uses' => 'RickastleyController@destroy'
     ]);
 
 });

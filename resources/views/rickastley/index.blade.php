@@ -3,21 +3,38 @@
 @section('title','When it was your last when you watch Rick Astley?')
 
 @section('content')
-    {!! link_to_action('RickastleyController@create','Create', [], ['class' => 'btn btn-default']) !!}
+    <div style="float: right">
+        {!! link_to_action('RickastleyController@create','Create', [], ['class' => 'btn btn-primary']) !!}
+    </div>
 
-    {!! Form::open(['action' => 'RickastleyController@store', 'method' => 'post', 'style' => 'display:inline-block']) !!}
-    {!! Form::button('Store', ['class' => 'btn btn-default']    ) !!}
-    {!! Form::close() !!}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Identity</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Rating</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
 
-    {!! link_to_action('RickastleyController@show', 'Show', ['id' => '0'], ['class' => 'btn btn-default']) !!}
+        @foreach($rickastley as $rick)
+            <tr>
+                <th>{{ $rick['id'] }}</th>
+                <th>{!! link_to_action('RickastleyController@show', $rick['identity'], ['id' => $rick['id']]) !!}</th>
+                <th>{{ $rick['firstname'] }}</th>
+                <th>{{ $rick['lastname'] }}</th>
+                <th>{{ $rick['rate'] }}</th>
 
-    {!! link_to_action('RickastleyController@edit', 'Edit', ['id' => '0'], ['class' => 'btn btn-default']) !!}
-
-    {!! Form::open(['action' => 'RickastleyController@update', 'method' => 'put', 'style' => 'display:inline-block']) !!}
-    {!! Form::button('Update', ['class' => 'btn btn-default']    ) !!}
-    {!! Form::close() !!}
-
-    {!! Form::open(['action' => 'RickastleyController@delete', 'method' => 'delete', 'style' => 'display:inline-block']) !!}
-    {!! Form::button('Delete', ['class' => 'btn btn-default']    ) !!}
-    {!! Form::close() !!}
+                <th>{!! link_to_action('RickastleyController@edit', 'Edit', ['id' => $rick['id']], ['class' => 'btn btn-default']) !!}</th>
+                <th>
+                    {!! Form::open(['action' => ['RickastleyController@destroy', $rick['id']], 'method' => 'delete', 'style' => 'display:inline-block']) !!}
+                    {!! Form::submit('Delete', ['class' => 'btn btn-default']) !!}
+                    {!! Form::close() !!}
+                </th>
+            </tr>
+        @endforeach
+    </table>
 @endsection

@@ -34,3 +34,4 @@
 {!! Form::submit('Create', ['class' => 'btn btn-default']) !!}
 {!!Form::close()!!}
 @stop
+

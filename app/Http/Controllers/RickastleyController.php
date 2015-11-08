@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rickastley;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,11 @@ class RickastleyController extends Controller
      */
     public function index()
     {
-        return view('rickastley.index');
+        $rickastley = Rickastley::all();
+
+        return view('rickastley.index', [
+            'rickastley' => $rickastley
+        ]);
     }
 
     /**
@@ -37,7 +42,20 @@ class RickastleyController extends Controller
      */
     public function store(Request $request)
     {
-        return view('rickastley.store');
+        $identity = $request->input('identity');
+        $firstname = $request->input('firstname');
+        $lastname = $request->input('lastname');
+        $rate = $request->input('rate');
+
+        $new = Rickastley::create([
+            'identity' => $identity,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'rate' => $rate
+        ]);
+        $new->save();
+
+        return redirect()->route('rickastley.index');
     }
 
     /**
@@ -48,7 +66,10 @@ class RickastleyController extends Controller
      */
     public function show($id)
     {
-        return view('rickastley.show');
+        $rick = Rickastley::find($id);
+        return view('rickastley.show', [
+            'rick' => $rick
+        ]);
     }
 
     /**
@@ -59,7 +80,10 @@ class RickastleyController extends Controller
      */
     public function edit($id)
     {
-        return view('rickastley.edit');
+        $rick = Rickastley::find($id);
+        return view('rickastley.edit', [
+            'rick' => $rick
+        ]);
     }
 
     /**
@@ -71,7 +95,19 @@ class RickastleyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return view('rickastley.update');
+        $identity = $request->input('identity');
+        $firstname = $request->input('firstname');
+        $lastname = $request->input('lastname');
+        $rate = $request->input('rate');
+
+        $obj = Rickastley::find($id);
+        $obj->identity = $identity;
+        $obj->firstname = $firstname;
+        $obj->lastname = $lastname;
+        $obj->rate = $rate;
+        $obj->save();
+
+        return redirect()->route('rickastley.index');
     }
 
     /**
@@ -82,6 +118,7 @@ class RickastleyController extends Controller
      */
     public function destroy($id)
     {
-        return view('rickastley.destroy');
+        Rickastley::destroy($id);
+        return redirect()->route('rickastley.index');
     }
 }
