@@ -1,17 +1,14 @@
-
-<!-- Stored in resources/views/layouts/master.blade.php -->
-
 <html>
     <head>
-        <title>Country - @yield('title')</title>
+        <title> LaravelTestWeb15: Country - @yield('title')</title>
     </head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <body>
-        @section('sidebar')
-            Countries!
+        <div class='container'>
+        @section('content')   
         @show
-
-        <div class="container">
-            @yield('content')
         </div>
+
     </body>
 </html>
+
