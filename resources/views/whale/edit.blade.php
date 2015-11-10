@@ -26,6 +26,17 @@
         {!! Form::label('Sex') !!}
         {!! Form::select('sex', ['Male' => 'male', 'Female' => 'female'], null, ['class' => 'form-control'])!!}
     </div>
+    
+    <div>
+        {!! Form::label('Love fruit') !!}
+        {!! Form::text('fruit', null, ['class' => 'form-control']) !!}
+    </div>
+    
+    <div>
+        {!! Form::label('Hobby') !!}
+        {!! Form::text('hobby', null, ['class' => 'form-control']) !!}
+    </div>
+    
     </br>
     
         {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}    

@@ -6,7 +6,7 @@
     
     <p>  Vikings - Destroy countries!</p>
         
-    {!!Form::open(['route' => 'country.index','method' => 'GET'])!!}
+    {!!Form::open(['route' => 'countries.index','method' => 'GET'])!!}
     {!!Form::submit('Back')!!}
     {!!Form::close()!!}
     

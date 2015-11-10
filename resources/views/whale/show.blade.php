@@ -15,6 +15,10 @@
     <p> {!! $object['lastname'] !!}</>
 
     <p> {!! $object['sex'] !!}</p>
+    
+    <p> {!! $object['fruit'] !!}</p>
+    
+    <p> {!! $object['hobby'] !!}</p>
 
     {!! HTML::link('whale','Back to whales', ['class'=>'btn btn-primary']) !!}
 

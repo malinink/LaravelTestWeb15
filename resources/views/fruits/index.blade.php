@@ -14,6 +14,8 @@
         <th> Name </th>
         <th> Color </th>
         <th> Weight </th>
+        <th> Price </th>
+        <th> Condition </th>
         <th> Control </th>
         <th>  </th>
     </tr>
@@ -31,6 +33,8 @@
     <td> {!! $fruit['name'] !!} </td>
     <td> {!! $fruit['color'] !!} </td>
     <td> {!! $fruit['weight'] !!} </td>
+    <td> {!! $fruit['price'] !!} </td>
+    <td> {!! $fruit['condition'] !!} </td>
     <td> {!! link_to_action('Fruits@edit', 'edit', [$fruit['id']], ['class' => 'btn btn-default btn-sm']) !!} </td>
     <td> {!! Form::open(['action' => ['Fruits@destroy', $fruit['id']], 'method'=>'DELETE']) !!}
          {!! Form::submit('destroy', ['class' => 'btn btn-default btn-sm']) !!}

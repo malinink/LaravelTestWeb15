@@ -22,6 +22,8 @@
         <th> Name in Anime </th>
         <th> Language </th>
         <th> Area </th>
+        <th> Year of Foundation </th>
+        <th> Sibling </th>
         <th>  </th>
     </tr>
 
@@ -33,6 +35,8 @@
     <td> {!! $country['nameanime'] !!} </td>
     <td> {!! $country['language'] !!} </td>
     <td> {!! $country['area'] !!} </td>
+    <td> {!! $country['year'] !!} </td>
+    <td> {!! $country['sibling'] !!} </td>
     <td> {!! link_to_action('CountriesController@edit', 'Edit', [$country['id']], ['class' => 'btn btn-default btn-sm']) !!} </td>
     <td> {!! Form::open(['action' => ['CountriesController@destroy', $country['id']], 'method'=>'DELETE']) !!}
          {!! Form::submit('Delete', ['class' => 'btn btn-default btn-sm']) !!}

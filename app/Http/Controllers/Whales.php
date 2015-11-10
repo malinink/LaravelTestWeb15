@@ -20,15 +20,10 @@ public function create()
 }
 public function store()
 {
-    $data = Request::only('id','firstName','lastName','sex');
-    $object = new Whale();
-    $object->identity = $data['id'];
-    $object->firstname = $data['firstName'];
-    $object->lastname = $data['lastName'];
-    $object->sex = $data['sex'];
-    $object->save();
-    
-    return redirect('whale');
+    $data = Request::only('identity','firstname','lastname','sex','fruit','hobby');
+    $object = Whale::create($data);
+  
+   return redirect('whale');
 }
 public function show($id)
 {
@@ -42,13 +37,9 @@ public function edit($id)
 }
 public function update($id)
 {
-    $new = Request::only('identity','firstname','lastname','sex');
-    $old = Whale::find($id);
-    $old->identity = $new['identity'];
-    $old->firstname = $new['firstname'];
-    $old->lastname = $new['lastname'];
-    $old->sex = $new['sex']; 
-    $old->save();
+    $new = Request::only('identity','firstname','lastname','sex','fruit','hobby');
+    $old = Whale::findOrFail($id);
+    $old->update($new);
     
     return redirect('whale');
 }

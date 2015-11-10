@@ -21,12 +21,14 @@ class Fruits extends Controller
     
     public function store()
     {
-        $request = Request::only('identity', 'name', 'color', 'weight');
+        $request = Request::only('identity', 'name', 'color', 'weight', 'price', 'condition');
         $fruit = new Fruit();
         $fruit->identity = $request['identity'];
         $fruit->name = $request['name'];
         $fruit->color = $request['color'];
         $fruit->weight = $request['weight'];
+        $fruit->price = $request['price'];
+        $fruit->condition = $request['condition'];
         $fruit->save();
         
         return redirect('fruits')->with('message', 'Fruit created successfully!');
@@ -48,12 +50,14 @@ class Fruits extends Controller
     
     public function update($id)
     {   
-        $new = Request::only('identity', 'name', 'color', 'weight');
+        $new = Request::only('identity', 'name', 'color', 'weight', 'price', 'condition');
         $fruit = Fruit::find($id);
         $fruit->identity = $new['identity'];
         $fruit->name = $new['name'];
         $fruit->color = $new['color'];
         $fruit->weight = $new['weight'];
+        $fruit->price = $new['price'];
+        $fruit->condition = $new['condition'];
         $fruit->save();
         
         return redirect('fruits')->with('message', 'Fruit updated!');

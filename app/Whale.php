@@ -11,7 +11,9 @@ class Whale extends Model
         'identity',
         'firstname',
         'lastname',
-        'sex'
+        'sex',
+        'fruit',
+        'hobby'
     );
     public $timestamps = false;
 }

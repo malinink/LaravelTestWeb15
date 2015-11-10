@@ -23,6 +23,8 @@
         <th> Firstname </th>
         <th> Lastname </th>
         <th> Sex </th>
+        <th> Love fruit </th>
+        <th> Hobby </th>
         <th> Edit </th>
         <th> Delete </th>
     </tr>
@@ -34,6 +36,8 @@
         <td> {!! $whale['firstname'] !!} </td>
         <td> {!! $whale['lastname'] !!} </td>
         <td> {!! $whale['sex'] !!} </td>
+        <td> {!! $whale['fruit'] !!} </td>
+        <td> {!! $whale['hobby'] !!} </td>
         <td> {!! Form::open (['route'=> ['whale.edit', $whale['id']], 'method'=>'get'])!!} {!! Form::submit('Edit') !!} {!! Form::close() !!}</td>
         <td> {!! Form::open (['route'=> ['whale.destroy', $whale['id']]])!!} 
                  {!! Form::button('Delete', ['name'=>'_method', 'type'=>'_hidden', 'value'=>'DELETE']) !!} 
