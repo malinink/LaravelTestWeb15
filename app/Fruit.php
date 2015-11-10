@@ -8,5 +8,5 @@ class Fruit extends Model
 {
     protected $table = 'fruits';
     
-    protected $fillable = ['identity', 'name', 'color', 'weight'];
+    protected $fillable = ['identity', 'name', 'color', 'weight', 'price', 'condition'];
 }

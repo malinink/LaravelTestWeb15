@@ -1,4 +1,5 @@
 # Laravel Test Web15
+<img title="Build Status Images" src="https://travis-ci.org/malinink/LaravelTestWeb15.svg">
 
 ## Прочесть перед установкой
 
