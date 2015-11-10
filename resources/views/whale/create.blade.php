@@ -5,6 +5,14 @@
 @section('content')
     <h1> Add new inhabitant </h1>
 
+    @if ($errors->any)
+        <ul class='alert-warning'>
+            @foreach ($errors->all() as $error)
+            <li> {!! $error !!}</li>
+            @endforeach
+        </ul>
+    @endif
+    
     {!! Form::open(['route' => 'whale.store']) !!}
     
     <div>
