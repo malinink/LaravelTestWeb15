@@ -8,31 +8,50 @@ Route::get('/', function () {
 Route::get('countries/',[
     'as'=> 'countries.index',
     'uses'=>'CountriesController@index'
-    ]);
-Route::get('countries/create',[
+    ]
+);
+Route::get(
+    'countries/create',
+    [
     'as' => 'countries.create',
     'uses' => 'CountriesController@create'
-    ]);
-Route::get('countries/{id}',[
+    ]
+);
+Route::get(
+    'countries/{id}',
+    [
     'as' => 'countries.show',
     'uses' => 'CountriesController@show'
-    ]);
-Route::post('countries/',[
+    ]
+);
+Route::post(
+    'countries/',
+    [
     'as'=> 'countries.store',
     'uses'=>'CountriesController@store'
-    ]);
-Route::get('countries/{id}/edit',[
+    ]
+);
+Route::get(
+    'countries/{id}/edit',
+    [
     'as' => 'countries.edit',
     'uses' => 'CountriesController@edit'
-    ]);
-Route::put('countries/{id}',[
+    ]
+);
+Route::put(
+    'countries/{id}',
+    [
     'as' => 'countries.update',
     'uses' => 'CountriesController@update'
-    ]);
-Route::delete('countries/{id}',[
+    ]
+);
+Route::delete(
+    'countries/{id}',
+    [
     'as' => 'countries.destroy',
     'uses' => 'CountriesController@destroy'
-    ]);
+    ]
+);
 
 
 Route::get('/fruits', ['as' => 'fruits.index', 'uses' => 'Fruits@index']);

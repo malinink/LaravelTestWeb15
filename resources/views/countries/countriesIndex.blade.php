@@ -3,7 +3,7 @@
 @section('title', 'Main')
 
 @section('content')
-    
+ 
 <h2> Let's discover something new about countries!</h2>
     
 <br>
