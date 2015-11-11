@@ -1,38 +1,87 @@
 <?php
+/**
+ * Short description for file
+ *
+ * Long description for file (if any)...
+ *
+ * PHP version 5
+ *
+ * LICENSE: This source file is subject to version 3.01 of the PHP license
+ * that is available through the world-wide-web at the following URI:
+ * http://www.php.net/license/3_01.txt.  If you did not receive a copy of
+ * the PHP License and are unable to obtain it through the web, please
+ * send a note to license@php.net so we can mail you a copy immediately.
+ *
+ * @category   CategoryName
+ * @package    PackageName
+ * @author     Original Author <author@example.com>
+ * @author     Another Author <another@example.com>
+ * @copyright  1997-2005 The PHP Group
+ * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @version    SVN: $Id$
+ * @link       http://pear.php.net/package/PackageName
+ * @see        NetOther, Net_Sample::Net_Sample()
+ * @since      File available since Release 1.2.0
+ * @deprecated File deprecated in Release 2.0.0
+ */
 
-Route::get('/', function(){
-    return view('welcome');
-});
+Route::get(
+    '/',
+    function () {
+        return view('welcome');
+    }
+);
 
 
-Route::get('countries/',[
+Route::get(
+    'countries/',
+    [
     'as'=> 'countries.index',
     'uses'=>'CountriesController@index'
-    ]);
-Route::get('countries/create',[
+    ]
+);
+Route::get(
+    'countries/create',
+    [
     'as' => 'countries.create',
     'uses' => 'CountriesController@create'
-    ]);
-Route::get('countries/{id}',[
+    ]
+);
+Route::get(
+    'countries/{id}',
+    [
     'as' => 'countries.show',
     'uses' => 'CountriesController@show'
-    ]);
-Route::post('countries/',[
+    ]
+);
+Route::post(
+    'countries/',
+    [
     'as'=> 'countries.store',
     'uses'=>'CountriesController@store'
-    ]);
-Route::get('countries/{id}/edit',[
+    ]
+);
+Route::get(
+    'countries/{id}/edit',
+    [
     'as' => 'countries.edit',
     'uses' => 'CountriesController@edit'
-    ]);
-Route::put('countries/{id}',[
+    ]
+);
+Route::put(
+    'countries/{id}',
+    [
     'as' => 'countries.update',
     'uses' => 'CountriesController@update'
-    ]);
-Route::delete('countries/{id}',[
+    ]
+);
+Route::delete(
+    'countries/{id}',
+    [
     'as' => 'countries.destroy',
     'uses' => 'CountriesController@destroy'
-    ]);
+    ]
+);
 
 
 Route::get('/fruits', ['as' => 'fruits.index', 'uses' => 'Fruits@index']);
