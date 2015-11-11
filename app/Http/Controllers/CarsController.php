@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Input;
  *
  * @author bubrick
  */
-class CarsController extends Controller 
+class CarsController extends Controller
 {
     public function index()
     {
