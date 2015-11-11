@@ -44,12 +44,7 @@ class CountriesController extends BaseController
     public function index()
     {
         $countries = Countries::all();
-        return view(
-            'countries/countriesIndex',
-            [
-            'countries' => $countries
-            ]
-        );
+        return view('countries/countriesIndex', ['countries' => $countries]);
     }
      /**
     * function - create new country
@@ -59,9 +54,7 @@ class CountriesController extends BaseController
 
     public function create()
     {
-        return view(
-            'countries/countriesCreate'
-        );
+        return view('countries/countriesCreate');
     
     }
     /**
@@ -83,13 +76,8 @@ class CountriesController extends BaseController
          $country->year = $new['year'];
          $country->sibling = $new['sibling'];
          $country->save();
-        \Session::flash(
-            'flash_message',
-            'Create successful!'
-        );
-        return redirect(
-            'countries'
-        );  
+        \Session::flash('flash_message', 'Create successful!');
+        return redirect('countries');  
     }
     /**
     * function - show country
@@ -101,13 +89,7 @@ class CountriesController extends BaseController
     public function show($id)
     {
         $country = Countries::find($id);
-        return view(
-            'countries/countriesShow'
-        )->with(
-            'country',
-            $country
-        );
-   
+        return view('countries/countriesShow')->with('country', $country);
     }
     /**
     * function - edit country
@@ -119,13 +101,7 @@ class CountriesController extends BaseController
     public function edit($id)
     {
         $country = Countries::find($id);
-        return view(
-            'countries/countriesEdit'
-        )->with(
-            'country',
-            $country
-        );
-    
+        return view('countries/countriesEdit')->with('country', $country);
     }
     /**
     * function - update country
@@ -137,35 +113,25 @@ class CountriesController extends BaseController
     public function update($id)
     {
         $new = Request::only(
-            'identity',
-            'name',
-            'nameanime',
-            'language',
-            'area',
-            'year',
-            'sibling'
+            'identity', 'name', 'nameanime', 'language',
+            'area', 'year', 'sibling'
         );
         $country = Countries::find($id);
          
         $validator = Validator::make(
             $new,
             [
-                 'identity'=>'Required|Unique:countries',
-                 'name' => 'Required|Min:3|Max:80',
-                 'nameanime'     => 'Required|Min:3|Max:80',
-                 'language'       => 'Required|Min:3|Max:80',
-                 'area'  =>'Integer|Min:1',
-                 'year'=>'Integer|Min:1',
-                 'sibling'=>'Required|Min:3|Max:80'
+                 'identity'  => 'Required|Unique:countries',
+                 'name'      => 'Required|Min:3|Max:80',
+                 'nameanime' => 'Required|Min:3|Max:80',
+                 'language'  => 'Required|Min:3|Max:80',
+                 'area'      => 'Integer|Min:1',
+                 'year'      => 'Integer|Min:1',
+                 'sibling'   => 'Required|Min:3|Max:80'
             ] 
         );
-        if ($validator->fails()) {
-            
-            \Session::flash(
-                'flash_message',
-                'Something wrong!'
-            );
- 
+        if ($validator->fails()) {           
+            \Session::flash('flash_message', 'Something wrong!');
             return redirect()->back();
         }
 
@@ -177,12 +143,8 @@ class CountriesController extends BaseController
          $country->year = $new['year'];
          $country->sibling = $new['sibling'];
          $country->save();
-        \Session::flash(
-            'flash_message',
-            'Update successful!'
-        );
+        \Session::flash('flash_message', 'Update successful!');
          return redirect('countries');
-
     }
 
     /**
@@ -196,11 +158,7 @@ class CountriesController extends BaseController
     {
         $country=Countries::find($id);
         $country->delete();
-        return redirect(
-            'countries'
-        );
-     
+        return redirect('countries');
     }
- 
- 
 }
+

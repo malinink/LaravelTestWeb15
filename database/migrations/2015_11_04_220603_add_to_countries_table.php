@@ -56,9 +56,7 @@ class AddToCountriesTable extends Migration
         Schema::table(
             'countries',
             function ($table) {
-            
             $table->dropColumn(['year','sibling']);
-        
             }
         );
     }
