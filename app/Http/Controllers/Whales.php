@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Whale;
-use App\Http\Requests\whaleRequest;
+use App\Http\Requests\WhaleRequest;
 use Illuminate\Http\Request as BaseRequest;
 use Illuminate\Support\Facades\Input;
 use Request;
@@ -34,12 +34,12 @@ class Whales extends Controller {
     /**
      * Store new model and redirect
      * 
-     * @param whaleRequest $request data from form
+     * @param WhaleRequest $request data from form
      * 
      * @return main page
      * 
      */
-    public function store(whaleRequest $request )
+    public function store(WhaleRequest $request )
     {
         $data = new Whale();
         $data['identity'] = $request['identity'];
