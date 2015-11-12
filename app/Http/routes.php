@@ -2,12 +2,13 @@
 
 Route::get('/', function () {
      return view('welcome');
- });
+});
 
  
  
 Route::get(
-    'countries/', ['as'=> 'countries.index','uses'=>'CountriesController@index']
+    'countries/',
+    ['as'=> 'countries.index','uses'=>'CountriesController@index']
 );
 
 Route::get(
