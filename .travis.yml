@@ -8,7 +8,7 @@ install:
  - mysql -e 'create database if not exists test;'
  - composer self-update
  - composer install  --no-interaction
- - chmod -R 777 app/storage
+ - chmod -R 777 storage
  - php artisan migrate:install --env=testing --no-interaction -vvv
 script:
  - ./vendor/bin/phpcs
