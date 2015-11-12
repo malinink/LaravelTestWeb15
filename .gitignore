@@ -3,5 +3,6 @@
 Homestead.yaml
 Homestead.json
 .env
+.env.testing
 composer.lock
 _ide_helper.php
