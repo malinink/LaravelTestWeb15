@@ -192,4 +192,12 @@ Route::group(['prefix' => 'rickastley'], function () {
 
 });
 
+Route::get('footballclubs/', 'FootballClubsController@index');
+Route::post('footballclubs/', 'FootballClubsController@store');
+Route::get('footballclubs/create', 'FootballClubsController@create');
+Route::get('footballclubs/{id}', 'FootballClubsController@show');
+Route::get('footballclubs/{id}/edit', 'FootballClubsController@edit');
+Route::post('footballclubs/{id}','FootballClubsController@update');
+Route::delete('footballclubs/{id}', 'FootballClubsController@destroy');
+
 
