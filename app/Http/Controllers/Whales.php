@@ -41,14 +41,7 @@ class Whales extends Controller {
      */
     public function store(WhaleRequest $request )
     {
-        $data = new Whale();
-        $data['identity'] = $request['identity'];
-        $data['firstname'] = $request['firstname'];
-        $data['lastname'] = $request['lastname'];
-        $data['sex'] = $request['sex'];
-        $data['fruit'] = $request['fruit'];
-        $data['hobby'] = $request['hobby'];
-        $data->save();
+        Whale::create($request->all());
         
         \Session::flash('flash_message', 'New whale has been added!');
         return redirect('whale');
