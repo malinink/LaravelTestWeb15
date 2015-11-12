@@ -4,6 +4,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Web15</title>
+        
+        <style>
+            ul { 
+                    list-style-type: none; 
+               }
+            li:before {
+                    content: '\2740';
+               }
+        </style>
 	
 </head>
 
@@ -11,8 +20,13 @@
 
 	<hr>
 	<div class="container">
-		@yield("content")
-		<hr>
+            
+	    @if (Session::has('flash_message'))
+                <div class='alert alert-success'>{!! Session::get('flash_message') !!}</div>
+            @endif
+            
+            @yield("content")
+            <hr>
 	</div>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>

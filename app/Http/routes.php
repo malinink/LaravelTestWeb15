@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', function(){
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -44,29 +44,28 @@ Route::put('/fruits/{id}', ['as' => 'fruits.update', 'uses' => 'Fruits@update'])
 Route::delete('/fruits/{id}', ['as' => 'fruits.destroy', 'uses' => 'Fruits@destroy']);
 
 
-Route::get('whale',[
-    'as' => 'whale.index', 'uses' => 'Whales@index'
-]);
-Route::get('whale/create',[
-    'as' => 'whale.create', 'uses' => 'Whales@create'
-]);
-Route::post('whale',[
-    'as' => 'whale.store', 'uses' => 'Whales@store'
-]);
-Route::get('whale/{id}',[
-    'as' => 'whale.show', 'uses' => 'Whales@show'
-]);
-Route::get('whale/{id}/edit',[
-    'as' => 'whale.edit', 'uses' => 'Whales@edit'
-]);
+Route::get(
+    'whale', ['as' => 'whale.index', 'uses' => 'Whales@index']
+);
+Route::get(
+    'whale/create', ['as' => 'whale.create', 'uses' => 'Whales@create']
+);
+Route::post(
+    'whale', ['as' => 'whale.store', 'uses' => 'Whales@store']
+);
+Route::get(
+    'whale/{id}', ['as' => 'whale.show', 'uses' => 'Whales@show']
+);
+Route::get(
+    'whale/{id}/edit', ['as' => 'whale.edit', 'uses' => 'Whales@edit']
+);
 
-Route::put('whale/{id}',[
-    'as' => 'whale.update', 'uses' => 'Whales@update'
-]);
-Route::delete('whale/{id}',[
-    'as' => 'whale.destroy' , 'uses' => 'Whales@destroy',
-
-]);
+Route::put(
+    'whale/{id}', ['as' => 'whale.update', 'uses' => 'Whales@update']
+);
+Route::delete(
+    'whale/{id}', ['as' => 'whale.destroy' , 'uses' => 'Whales@destroy']
+);
 
 
 // games

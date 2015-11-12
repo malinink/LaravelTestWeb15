@@ -5,6 +5,14 @@
 @section('content')
     <h1>Edit</h1>
     
+    @if ($errors->any)
+        <ul class='alert-warning'>
+            @foreach ($errors->all() as $error)
+            <li> {!! $error !!}</li>
+            @endforeach
+        </ul>
+    @endif
+    
     {!! Form::model($whale, ['route' => ['whale.update', $whale['id']], 'method'=>'put'])!!}
 
     <div>
