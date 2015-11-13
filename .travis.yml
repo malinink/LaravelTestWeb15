@@ -1,11 +1,19 @@
 language: php
 php:
   - 5.6
-install: 
- - composer install
- - cp .env.example .env
- - php artisan key:generate
+services:
+  - mysql
+install:
+ - cp .testing.env.travis .testing.env
+ - echo "testing" > .env
+ - mysql -e 'create database if not exists test;'
+ - composer self-update
+ - composer install  --no-interaction
+ - chmod -R 777 storage
+ - php artisan migrate:install --no-interaction -vvv
 script:
  - ./vendor/bin/phpcs
+ - php artisan migrate --no-interaction -vvv
+ - php artisan db:seed --no-interaction -vvv
  - phpunit
-
+ - php artisan migrate:rollback --no-interaction -vvv
