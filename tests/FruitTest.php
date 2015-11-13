@@ -28,7 +28,7 @@ class FruitTest extends TestCase
     public function testStoreButton()
     {
         $this->visit('/fruits/create')
-            ->see('localhost/fruits');
+            ->see('localhost/fruits'); // почему это работает?)
     }
     
     /**
@@ -47,7 +47,7 @@ class FruitTest extends TestCase
             'color' => $fruit1->color,
             'weight' => $fruit1->weight,
             'price' => $fruit1->price
-        ]; // почему тут не работает $form = compact($fruit1) ?
+        ];  // почему тут не работает $form = compact($fruit1) ?
         $param = ['_token' => csrf_token()];
         $this->action('POST', 'Fruits@store', $form+$param);
         $this->assertSessionHasErrors();
