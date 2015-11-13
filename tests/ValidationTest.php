@@ -30,6 +30,6 @@ class ValidationTest extends TestCase
         
         $this->call('POST', '/whale', $token);
         
-        $this->dontSeeInDatabase('whales',['identity'=>$data['identity']]);
+        $this->dontSeeInDatabase('whales', ['identity'=>$data['identity']]);
     }
 }
