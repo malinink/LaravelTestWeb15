@@ -7,12 +7,12 @@
     <exclude-pattern>vendor</exclude-pattern>
     <exclude-pattern>_ide_helper.php</exclude-pattern>
     <exclude-pattern>bootstrap/cache</exclude-pattern>
-    <!-- that should be commented after travis-ci connected // 
+    <!-- that should be commented after travis-ci connected // --> 
     <exclude-pattern>routes.php</exclude-pattern>
     <exclude-pattern>app/Http/Controllers</exclude-pattern>
     <exclude-pattern>database/migrations</exclude-pattern>
     <exclude-pattern>app/*.php</exclude-pattern>
-     // to that string -->
+    <!-- // to that string -->
 
     <!-- default parameters -->
     <arg name="report" value="summary"/>
