@@ -32,6 +32,8 @@
                     <tr>
                         <th width = 150>Title</th>
                         <th>Description</th>
+                        <th width = 1>Genre</th>
+                        <th width = 1>Published</th>
                         <th width = 1>Edit</th>
                         <th width = 1>Delete</th>
                     </tr>
@@ -47,6 +49,8 @@
                                 
                             </td>
                             <td>{{$game->description}}</td>
+                            <td>{{$game->genre}}</td>
+                            <td>{{$game->published}}</td>
                             <td>
                                 {!! HTML::linkAction('GamesController@edit', 
                                 '...', ['id' => $game->id], ['class' => 'btn btn-default']) !!}
