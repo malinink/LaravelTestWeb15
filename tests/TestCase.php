@@ -7,8 +7,14 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
      *
      * @var string
      */
-    protected $baseUrl = 'http://localhost';
+    protected $baseUrl = 'http://localhost'; // почему это работает?
 
+    public function setUp()
+    {
+        parent::setUp();
+        Artisan::call('migrate');
+    }
+    
     /**
      * Creates the application.
      *
