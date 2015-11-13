@@ -1,12 +1,9 @@
-@extends('Computers.sample')
+@extends('Computers.sample_create_edit')
 
-@section('title', 'Create')
+@section('for_open_form')
+    {!! Form::open(['action' => 'ComputersController@store', 'method' => 'POST']) !!}
+@endsection
 
-@section('body')
-<h1>Create computer</h1>
-
-{!! Form::open(['action' => 'ComputersController@index', 'method' => 'GET', 'style'=>'display:inline']) !!}
-{!! Form::submit('back', ['class' => 'button']) !!}
-{!! Form::close() !!}
-
+@section('for_button')
+    {!! Form::submit('Create', ['class' => 'btn btn-success', 'style' => 'float:left']) !!} 
 @endsection

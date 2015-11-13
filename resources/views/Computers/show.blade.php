@@ -1,12 +1,12 @@
 @extends('Computers.sample')
 
-@section('title', 'Store')
-
 @section('body')
-<h1>Nothing to show :(</h1>
+<p> <b>id</b>: {!! $comp['id'] !!} </p>
+<p> <b>Mark</b>: {!! $comp['mark'] !!} </p>
+<p> <b>Model</b>: {!! $comp['model'] !!} </p>
+<p> <b>Price</b>: {!! $comp['price'] !!} </p>
+<p> <b>Storage №</b>{!! $comp['index_of_storage'] !!} </p>
 
-{!! Form::open(['action' => 'ComputersController@index', 'method' => 'GET', 'style'=>'display:inline']) !!}
-{!! Form::submit('back', ['class' => 'button']) !!}
-{!! Form::close() !!}
+{!! link_to_action('ComputersController@index', 'Back', [], ['class' => 'btn btn-default']) !!}
 
 @endsection
