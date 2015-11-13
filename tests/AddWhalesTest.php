@@ -31,5 +31,3 @@ class AddWhalesTest extends TestCase
         
     }
 }
-
-    
