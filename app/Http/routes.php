@@ -191,5 +191,3 @@ Route::group(['prefix' => 'rickastley'], function () {
     ]);
 
 });
-
-
