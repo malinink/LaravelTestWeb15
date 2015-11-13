@@ -10,7 +10,7 @@ class FruitTest extends TestCase
     
     /**
      * Test index page returns 200 code.
-     * 
+     *
      * @return void
      */
     public function testIndexRequst()
@@ -22,7 +22,7 @@ class FruitTest extends TestCase
     
     /**
      * Test create page contains a link to main page.
-     * 
+     *
      * @return void
      */
     public function testStoreButton()
@@ -34,7 +34,7 @@ class FruitTest extends TestCase
     /**
      * Test incorrectly completed form returns error
      * and object isn't added to database.
-     * 
+     *
      * @return void
      */
     public function testWrongValidation()
@@ -56,7 +56,7 @@ class FruitTest extends TestCase
     
     /**
      * Test correctly completed form adds object to database.
-     * 
+     *
      * @return void
      */
     public function testTrueValidation()
@@ -76,7 +76,7 @@ class FruitTest extends TestCase
     
     /**
      * Test destroy button deletes object from database.
-     * 
+     *
      * @return void
      */
     public function testDestroyButton()
