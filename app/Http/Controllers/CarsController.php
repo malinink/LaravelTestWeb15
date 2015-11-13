@@ -24,7 +24,14 @@ class CarsController extends Controller
     }
     public function store()
     {
-        $new = Request::only('identity', 'brand', 'model', 'color');
+        $new = Request::only(
+                'identity',
+                'brand',
+                'model',
+                'year',
+                'color',
+                'price'
+                );
         $car = Car::create($new);
         return redirect('cars');
     }
@@ -40,7 +47,14 @@ class CarsController extends Controller
     }
     public function update($id)
     {
-        $new = Request::only('identity', 'brand', 'model', 'color');
+        $new = Request::only(
+                'identity',
+                'brand',
+                'model',
+                'year',
+                'color',
+                'price'
+                );
         $old = Car::find($id);
         $old->update($new);
         return redirect('cars');
