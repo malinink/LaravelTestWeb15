@@ -2,28 +2,31 @@
 @section('title','Index')
 @section('content')
 
-{!! Form::open(['route' => 'sports.create','method' => 'get','style'=>'display:inline'])!!}
-{!!Form::submit('Create', ['class' => 'btn btn-default']) !!}
-{!!Form::close()!!}
-
-{!! Form::open(['route' => 'sports.store','method' => 'post','style'=>'display:inline'])!!}
-{!!Form::submit('Store', ['class' => 'btn btn-success']) !!}
-{!!Form::close()!!}
-
-{!! Form::open(['route' => ['sports.show','id' => 1],'method' => 'get','style'=>'display:inline'])!!}
-{!!Form::submit('Show', ['class' => 'btn btn-info']) !!}
-{!!Form::close()!!}
-
-{!! Form::open(['route' => ['sports.edit', 'id' => 1], 'method' => 'get','style'=>'display:inline'])!!}
-{!!Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
-{!!Form::close()!!}
-
-{!! Form::open(['route' => ['sports.update', 'id' => 1], 'method' => 'put','style'=>'display:inline'])!!}
-{!!Form::submit('Update', ['class' => 'btn btn-warning']) !!}
-{!!Form::close()!!}
-
-{!! Form::open(['route' => ['sports.destroy', 'id' => 1], 'method' => 'delete','style'=>'display:inline'])!!}
-{!!Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-{!!Form::close()!!}
-
+<h1>Sports</h1>
+<table class='table'>
+    <tr>
+        <th>#</th>
+        <th>Identity</th>
+        <th>Name</th>
+        <th>Count</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach($sports as $sport)
+    <tr>
+        <td>{!! $sport['id'] !!}</td>
+        <td>{!! link_to_action('Sports@show', $sport['identity'], $sport['id']) !!}</td>
+        <td>{!! $sport['name'] !!}</td>
+        <td>{!! $sport['count'] !!}</td>
+        <td>{!! link_to_action('Sports@edit', 'Edit', $sport['id'], 
+            ['class' => 'btn btn-warning']) !!}</td>
+        <td>{!! Form::open(['action' => ['Sports@destroy', $sport['id']], 
+            'method' => 'delete']) !!}
+            {!! Form::submit('Destroy', ['class' => 'btn btn-info']) !!}
+            {!! Form::close() !!}</td>
+    </tr>
+    @endforeach
+</table>
+{!! link_to_action('Sports@create', 'Create', [], 
+    ['class' => 'btn btn-success']) !!}
 @endsection
