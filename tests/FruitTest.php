@@ -51,7 +51,7 @@ class FruitTest extends TestCase
         $param = ['_token' => csrf_token()];
         $this->action('POST', 'Fruits@store', $form+$param);
         $this->assertSessionHasErrors();
-        $this->dontSeeInDatabase('fruits', $form);  
+        $this->dontSeeInDatabase('fruits', $form);
     }
     
     /**
