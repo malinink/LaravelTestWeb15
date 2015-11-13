@@ -5,14 +5,15 @@ services:
   - mysql
 install:
  - cp .testing.env.travis .testing.env
+ - echo "testing" > .env
  - mysql -e 'create database if not exists test;'
  - composer self-update
  - composer install  --no-interaction
  - chmod -R 777 storage
- - php artisan migrate:install --env=testing --no-interaction -vvv
+ - php artisan migrate:install --no-interaction -vvv
 script:
  - ./vendor/bin/phpcs
- - php artisan migrate --env=testing --no-interaction -vvv
- - php artisan db:seed --env=testing --no-interaction -vvv
+ - php artisan migrate --no-interaction -vvv
+ - php artisan db:seed --no-interaction -vvv
  - phpunit
- - php artisan migrate:rollback --env=testing --no-interaction -vvv
+ - php artisan migrate:rollback --no-interaction -vvv
