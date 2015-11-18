@@ -3,6 +3,14 @@
 @section('body')
 <h1>Fruits Create!</h1>
 
+@if(count($errors) > 0)
+    <div class='alert alert-warning'>
+        @foreach($errors->all() as $error)
+        <p>{{ $error }}</p>
+    @endforeach
+    </div>
+@endif
+
 {!! Form::open(['action' => 'Fruits@store', 'method' => 'POST']) !!}
 
 {!! Form::label('Identity') !!}

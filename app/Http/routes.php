@@ -42,13 +42,27 @@ Route::delete(
 );
 
 
-Route::get('/fruits', ['as' => 'fruits.index', 'uses' => 'Fruits@index']);
-Route::get('/fruits/create', ['as'  => 'fruits.create', 'uses' => 'Fruits@create']);
-Route::post('/fruits', ['as' => 'fruits.store', 'uses' => 'Fruits@store']);
-Route::get('/fruits/{id}', ['as' => 'fruits.show', 'uses' => 'Fruits@show']);
-Route::get('/fruits/{id}/edit', ['as' => 'fruits.edit', 'uses' => 'Fruits@edit']);
-Route::put('/fruits/{id}', ['as' => 'fruits.update', 'uses' => 'Fruits@update']);
-Route::delete('/fruits/{id}', ['as' => 'fruits.destroy', 'uses' => 'Fruits@destroy']);
+Route::get('/fruits', [
+    'as' => 'fruits.index', 'uses' => 'Fruits@index'
+    ]);
+Route::get('/fruits/create', [
+    'as'  => 'fruits.create', 'uses' => 'Fruits@create'
+    ]);
+Route::post('/fruits', [
+    'as' => 'fruits.store', 'uses' => 'Fruits@store'
+    ]);
+Route::get('/fruits/{id}', [
+    'as' => 'fruits.show', 'uses' => 'Fruits@show'
+    ]);
+Route::get('/fruits/{id}/edit', [
+    'as' => 'fruits.edit', 'uses' => 'Fruits@edit'
+    ]);
+Route::put('/fruits/{id}', [
+    'as' => 'fruits.update', 'uses' => 'Fruits@update'
+    ]);
+Route::delete('/fruits/{id}', [
+    'as' => 'fruits.destroy', 'uses' => 'Fruits@destroy'
+    ]);
 
 
 Route::get(
