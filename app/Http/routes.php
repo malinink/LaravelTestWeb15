@@ -117,7 +117,6 @@ Route::get('games/{id}/edit', [
     'as' => 'games.edit', 'uses' => 'GamesController@edit'
     ]);
 
-
 Route::get('computers/', 'ComputersController@index');
 Route::post('computers/', 'ComputersController@store');
 Route::get('computers/create', 'ComputersController@create');

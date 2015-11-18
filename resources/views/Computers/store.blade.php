@@ -1,7 +1,5 @@
 @extends('Computers.sample')
 
-@section('title', 'Show')
-
 @section('body')
 <h1>Store</h1>
 
