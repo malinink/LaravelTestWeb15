@@ -5,11 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class AddColumnsToCars extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('cars', function(Blueprint $table) {
@@ -17,14 +12,11 @@ class AddColumnsToCars extends Migration
             $table->integer('year')->after('model');
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        //
+        Schema::table('cars', function(Blueprint $table) {
+            $table->dropColumn('price');
+            $table->dropColumn('year');
+        });
     }
 }
