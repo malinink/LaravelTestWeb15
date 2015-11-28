@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Whale;
+use App\Food;
 use App\Http\Requests\WhaleRequest;
 use Illuminate\Http\Request as BaseRequest;
 use Illuminate\Support\Facades\Input;
@@ -29,7 +30,8 @@ class Whales extends Controller
      */
     public function create()
     {
-        return view('whale.create');
+        $foods = Food::lists('name', 'id');
+        return view('whale.create', compact('foods'));
     }
     
     /**
@@ -42,8 +44,10 @@ class Whales extends Controller
      */
     public function store(WhaleRequest $request)
     {
-        Whale::create($request->all());
-        
+       
+        $whale = Whale::create($request->all());
+        $foodsId = $request->input('food_list', []);
+        $whale->foods()->attach($foodsId);
         \Session::flash('flash_message', 'New whale has been added!');
         return redirect('whale');
     }
@@ -72,7 +76,9 @@ class Whales extends Controller
      */
     public function edit($id)
     {
-        return view('whale.edit')->with('whale', Whale::find($id));
+        $foods = Food::lists('name', 'id');
+        $whale = Whale::find($id);
+        return view('whale.edit', compact('whale', 'foods'));
     }
     /**
      * Store updating model and redirect
@@ -106,6 +112,8 @@ class Whales extends Controller
         );
         $old = Whale::findOrFail($id);
         $old->update($new);
+        $foodsId = $request->input('food_list', []);
+        $old->foods()->sync($foodsId);
         \Session::flash('flash_message', 'This whale has been updated!');
         return redirect('whale');
     }
