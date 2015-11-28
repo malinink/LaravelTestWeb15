@@ -1,28 +1,34 @@
 @extends('Computers.sample')
 
-@section('title', 'Computers')
-
 @section('body')
-<h1>Computers</h1>
 
-<h2>What will you choose?</h2>
 
-{!! link_to_action('ComputersController@create', 'create', [], ['class' => 'button', 'style'=>'display:inline']) !!}
+<table class='table table-hover table-striped table-condensed'>
+    
+    <tr>
+        <th> id </th>
+        <th> Mark </th>
+        <th> Model </th>
+        <th> Price </th>
+        <th> Storage № </th>
+        <th> </th>
+        <th> </th>
+    </tr>
 
-{!! Form::open(['action' => 'ComputersController@store', 'method' => 'POST', 'style'=>'display:inline']) !!}
-{!! Form::submit('store', ['class' => 'button']) !!}
-{!! Form::close() !!}
-
-{!! link_to_action('ComputersController@show', 'show', ['id' => '1'], ['class' => 'button', 'style'=>'display:inline']) !!}
-
-{!! link_to_action('ComputersController@edit', 'edit', ['id' => '2'], ['class' => 'button', 'style'=>'display:inline']) !!}
-
-{!! Form::open(['action' => ['ComputersController@update', 'id' => '3'], 'method'=>'POST', 'style'=>'display:inline']) !!}
-{!! Form::submit('update', ['class' => 'button']) !!}
-{!! Form::close() !!}
-
-{!! Form::open(['action' => ['ComputersController@destroy', 'id' => '4'], 'method'=>'DELETE', 'style'=>'display:inline']) !!}
-{!! Form::submit('destroy', ['class' => 'button']) !!}
-{!! Form::close() !!}
+@foreach($comps as $comp)
+    <tr>
+        <td> {!! link_to_action('ComputersController@show', $comp['id'], [$comp['id']]) !!} </td>
+        <td> {!! $comp['mark'] !!} </td>
+        <td> {!! $comp['model'] !!} </td>
+        <td> {!! $comp['price'] !!} </td>
+        <td> {!! $comp['index_of_storage'] !!} </td>
+        <td> {!! link_to_action('ComputersController@edit', 'edit', $comp['id'], ['class' => 'btn btn-sm btn-primary']) !!} </td>
+        <td> {!! Form::open(['action' => ['ComputersController@destroy', $comp['id']], 'method'=>'DELETE']) !!}
+             {!! Form::submit('destroy', ['class' => 'btn btn-sm btn-danger']) !!}
+             {!! Form::close() !!} </td>
+    </tr>
+@endforeach
+</table>
+{!! link_to_action('ComputersController@create', 'create', [], ['class' => 'btn btn-success', 'style' => 'float:right']) !!}
 
 @endsection
