@@ -7,7 +7,9 @@
         
         <style>
             ul { 
-                    list-style-type: none; 
+                    list-style-type: none;
+                    padding-left: 0;
+                    margin-left: 0;
                }
             li:before {
                     content: '\2740';

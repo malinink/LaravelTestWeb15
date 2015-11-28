@@ -45,9 +45,14 @@
         {!! Form::text('hobby', null, ['class' => 'form-control']) !!}
     </div>
     
+    <div>
+        {!! Form::label('foods', 'Food:') !!}
+        {!! Form::select('foods[]', $foods, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+    </div>
+    
     </br>
         
-        {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}    
+        {!! Form::submit('Create', ['class' => 'btn btn-primary' ]) !!}    
        
     {!! Form::close() !!}
 @stop
