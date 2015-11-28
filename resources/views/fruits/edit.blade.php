@@ -3,6 +3,14 @@
 @section('body')
 <h1>Fruits Edit.</h1>
 
+@if(count($errors) > 0)
+    <div class='alert alert-warning'>
+        @foreach($errors->all() as $error)
+        <p>{{ $error }}</p>
+    @endforeach
+    </div>
+@endif
+
 {!! Form::model($fruit, ['action' => ['Fruits@update', $fruit['id']], 'method' => 'PUT']) !!}
 
 {!! Form::label('Identity') !!}

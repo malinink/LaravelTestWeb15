@@ -2,8 +2,9 @@
 
 <html>
     <head>
-        <title>@yield('title')</title>
-        <style>
+        <title>@yield('title', $title)</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <style type="text/css">
             .button {
                 font-weight: 600;
                 color: white;
@@ -34,13 +35,11 @@
                 font-weight: bold;
                 color: #000;
                 letter-spacing: -0.11em;
-
             }
-            
     </style>
 
     </head>
-    <body>
+    <body class='container'>
         @section('body')
         @show
     </body>
