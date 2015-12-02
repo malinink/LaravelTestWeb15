@@ -109,7 +109,7 @@ class Whales extends Controller
             'lastname',
             'sex',
             'fruit',
-            'hobby'      
+            'hobby'
         );
         $old = Whale::findOrFail($id);
         $old->update($new);

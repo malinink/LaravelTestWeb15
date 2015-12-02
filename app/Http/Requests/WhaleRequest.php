@@ -30,7 +30,7 @@ class WhaleRequest extends Request
         'sex'       => 'required',
         'fruit'     => 'required|string',
         'hobby'     => 'required|string',
-        'food_list' => 'required'   
+        'food_list' => 'required'
         ];
     }
 }
