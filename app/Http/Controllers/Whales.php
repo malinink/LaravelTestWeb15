@@ -8,6 +8,7 @@ use App\Http\Requests\WhaleRequest;
 use Illuminate\Http\Request as BaseRequest;
 use Illuminate\Support\Facades\Input;
 use Request;
+use Session;
 
 class Whales extends Controller
 {
@@ -44,11 +45,10 @@ class Whales extends Controller
      */
     public function store(WhaleRequest $request)
     {
-       
-        $whale = Whale::create($request->all());
+        $whale = Whale::create($request->except('food_list'));
         $foodsId = $request->input('food_list', []);
         $whale->foods()->attach($foodsId);
-        \Session::flash('flash_message', 'New whale has been added!');
+        Session::flash('flash_message', 'New whale has been added!');
         return redirect('whale');
     }
     
@@ -99,7 +99,8 @@ class Whales extends Controller
                 'lastname'  => 'required|string',
                 'sex'       => 'required',
                 'fruit'     => 'required|string',
-                'hobby'     => 'required|string'
+                'hobby'     => 'required|string',
+                'food_list' => 'required'
             ]
         );
         $new = Request::only(
@@ -108,13 +109,13 @@ class Whales extends Controller
             'lastname',
             'sex',
             'fruit',
-            'hobby'
+            'hobby'      
         );
         $old = Whale::findOrFail($id);
         $old->update($new);
         $foodsId = $request->input('food_list', []);
         $old->foods()->sync($foodsId);
-        \Session::flash('flash_message', 'This whale has been updated!');
+        Session::flash('flash_message', 'This whale has been updated!');
         return redirect('whale');
     }
     /**
@@ -128,7 +129,7 @@ class Whales extends Controller
     {
         $object = Whale::find($id);
         $object->delete();
-        \Session::flash('flash_message', 'This whale has been deleted :(');
+        Session::flash('flash_message', 'This whale has been deleted :(');
         return redirect('whale');
     }
 }
