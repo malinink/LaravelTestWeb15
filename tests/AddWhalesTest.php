@@ -20,7 +20,8 @@ class AddWhalesTest extends TestCase
                 'lastname' => $faker->lastName,
                 'sex' => 'Male',
                 'fruit' => $faker->word,
-                'hobby' => $faker->word
+                'hobby' => $faker->word,
+                'food_list' => $faker->word
         ];
        
         $token = ['_token' => csrf_token()];
