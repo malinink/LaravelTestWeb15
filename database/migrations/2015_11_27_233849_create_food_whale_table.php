@@ -15,10 +15,10 @@ class CreateFoodWhaleTable extends Migration
         Schema::create(
             'food_whale',
             function (Blueprint $table) {
-                $table->integer('food_id')->unsigned()->index;
+                $table->integer('food_id')->unsigned();
                 $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
-                $table->integer('whale_id')->unsigned()->index;
-                $table->foreign('whale_id')->references('id')->on('whales');
+                $table->integer('whale_id')->unsigned();
+                $table->foreign('whale_id')->references('id')->on('whales')->onDelete('cascade');
                 $table->timestamps();
             }
         );
