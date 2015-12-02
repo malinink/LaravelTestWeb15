@@ -46,8 +46,8 @@
     </div>
     
     <div>
-        {!! Form::label('foods', 'Food:') !!}
-        {!! Form::select('foods[]', $foods, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+        {!! Form::label('food_list', 'Food:') !!}
+        {!! Form::select('food_list[]', $foods, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
     </div>
     
     </br>
