@@ -11,4 +11,10 @@ class Food extends Model
         'name'
     );
     public $timestamps = false;
+    
+    public function whales()
+    {
+    
+        return $this->belongsToMany('App\Whale');
+    }
 }
