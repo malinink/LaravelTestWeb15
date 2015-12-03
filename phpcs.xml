@@ -24,6 +24,9 @@
     <exclude-pattern>app/Http/Requests/FruitRequest.php</exclude-pattern>
     <exclude-pattern>app/Http/Controllers/Fruits.php</exclude-pattern>
     <exclude-pattern>app/Fruit.php</exclude-pattern>
+    <!-- Cars errors -->
+    <exclude-pattern>database/migrations/2015_11_13_212253_add_columns_to_cars.php</exclude-pattern>
+    <exclude-pattern>app/Http/Controllers/CarsController.php</exclude-pattern>
     <!-- */ that should be commented after travis-ci connected --> 
     
     <!-- default parameters -->
