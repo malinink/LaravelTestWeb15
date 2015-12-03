@@ -11,6 +11,7 @@ Route::get(
     ['as'=> 'countries.index','uses'=>'CountriesController@index']
 );
 
+
 Route::get(
     'countries/create',
     ['as' => 'countries.create','uses' => 'CountriesController@create']
@@ -73,6 +74,7 @@ Route::get('whale/{id}/edit', ['as' => 'whale.edit', 'uses' => 'Whales@edit']);
 Route::put('whale/{id}', ['as' => 'whale.update', 'uses' => 'Whales@update']);
 Route::delete('whale/{id}', ['as' => 'whale.destroy' , 'uses' => 'Whales@destroy']);
 
+Route::resource('food', 'Foods');
 
 // games
 

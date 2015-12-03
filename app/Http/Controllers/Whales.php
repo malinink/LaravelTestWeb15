@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Whale;
+use App\Food;
 use App\Http\Requests\WhaleRequest;
 use Illuminate\Http\Request as BaseRequest;
 use Illuminate\Support\Facades\Input;
 use Request;
+use Session;
 
 class Whales extends Controller
 {
@@ -29,7 +31,8 @@ class Whales extends Controller
      */
     public function create()
     {
-        return view('whale.create');
+        $foods = Food::lists('name', 'id');
+        return view('whale.create', compact('foods'));
     }
     
     /**
@@ -42,9 +45,10 @@ class Whales extends Controller
      */
     public function store(WhaleRequest $request)
     {
-        Whale::create($request->all());
-        
-        \Session::flash('flash_message', 'New whale has been added!');
+        $whale = Whale::create($request->except('food_list'));
+        $foodsId = $request->input('food_list', []);
+        $whale->foods()->attach($foodsId);
+        Session::flash('flash_message', 'New whale has been added!');
         return redirect('whale');
     }
     
@@ -72,7 +76,9 @@ class Whales extends Controller
      */
     public function edit($id)
     {
-        return view('whale.edit')->with('whale', Whale::find($id));
+        $foods = Food::lists('name', 'id');
+        $whale = Whale::find($id);
+        return view('whale.edit', compact('whale', 'foods'));
     }
     /**
      * Store updating model and redirect
@@ -93,7 +99,8 @@ class Whales extends Controller
                 'lastname'  => 'required|string',
                 'sex'       => 'required',
                 'fruit'     => 'required|string',
-                'hobby'     => 'required|string'
+                'hobby'     => 'required|string',
+                'food_list' => 'required'
             ]
         );
         $new = Request::only(
@@ -106,7 +113,9 @@ class Whales extends Controller
         );
         $old = Whale::findOrFail($id);
         $old->update($new);
-        \Session::flash('flash_message', 'This whale has been updated!');
+        $foodsId = $request->input('food_list', []);
+        $old->foods()->sync($foodsId);
+        Session::flash('flash_message', 'This whale has been updated!');
         return redirect('whale');
     }
     /**
@@ -120,7 +129,7 @@ class Whales extends Controller
     {
         $object = Whale::find($id);
         $object->delete();
-        \Session::flash('flash_message', 'This whale has been deleted :(');
+        Session::flash('flash_message', 'This whale has been deleted :(');
         return redirect('whale');
     }
 }
