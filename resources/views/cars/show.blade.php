@@ -10,14 +10,18 @@
         <th>Identity</th>
         <th>Brand</th>
         <th>Model</th>
+        <th>Year</th>
         <th>Color</th>
+        <th>Price</th>
     </tr>
     <tr>
         <td>{!! $car['id'] !!}</td>
         <td>{!! $car['identity'] !!}</td>
         <td>{!! $car['brand'] !!}</td>
         <td>{!! $car['model'] !!}</td>
+        <td>{!! $car['year'] !!}</td>
         <td>{!! $car['color'] !!}</td>
+        <td>{!! $car['price'] !!}</td>
     </tr>
 </table>
 {!! link_to_action('CarsController@index', 'Back to index', [], 

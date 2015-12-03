@@ -15,8 +15,14 @@
 {!! Form::label(' Model') !!}
 {!! Form::text('model', null, ['class' => 'form-control']) !!}
 
+{!! Form::label(' Year') !!}
+{!! Form::text('year', null, ['class' => 'form-control']) !!}
+
 {!! Form::label(' Color') !!}
 {!! Form::text('color', null, ['class' => 'form-control']) !!}
+
+{!! Form::label(' Price') !!}
+{!! Form::text('price', null, ['class' => 'form-control']) !!}
 <br>
 {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
 {!! Form::close() !!}
