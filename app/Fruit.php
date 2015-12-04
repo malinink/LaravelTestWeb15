@@ -22,4 +22,10 @@ class Fruit extends Model
         'identity', 'name', 'color', 'weight', 'price', 'condition'
         ];
 
+    public function collectors()
+    {
+        return $this->belongsToMany(
+                'App\Collector', 'blabla', 'fruit_id', 'collector_id'
+                );
+    }
 }
