@@ -28,7 +28,6 @@ class FruitRequest extends Request
             'color' => 'required|alpha',
             'weight' => 'required|numeric',
             'price' => 'required|numeric',
-            'collectors' => 'required',
         ];
     }
 }
