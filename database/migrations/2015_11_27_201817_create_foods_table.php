@@ -3,9 +3,9 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWhalesTable extends Migration
+class CreateFoodsTable extends Migration
 {
-    /**
+     /**
      * Create table
      *
      * @return void
@@ -13,16 +13,14 @@ class CreateWhalesTable extends Migration
     public function up()
     {
         Schema::create(
-            'whales',
+            'foods',
             function (Blueprint $table) {
                 $table->increments('id');
-                $table->integer('identity');
-                $table->string('firstname');
-                $table->string('lastname');
-                $table->string('sex');
+                $table->string('name');
                 $table->timestamps();
             }
         );
+        
     }
     /**
      * Drop table
@@ -31,6 +29,6 @@ class CreateWhalesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('whales');
+        Schema::drop('foods');
     }
 }

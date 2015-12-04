@@ -13,7 +13,8 @@ class AddFieldIntoWhales extends Migration
     public function up()
     {
         Schema::table(
-            'whales', function ($table) {
+            'whales',
+            function ($table) {
                 $table->string('fruit');
                 $table->string('hobby');
             }
@@ -28,7 +29,8 @@ class AddFieldIntoWhales extends Migration
     public function down()
     {
         Schema::table(
-            'whales', function ($table) {
+            'whales',
+            function ($table) {
                 $table->dropColumn('fruit');
                 $table->dropColumn('hobby');
             }

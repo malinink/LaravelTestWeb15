@@ -19,6 +19,14 @@
     <p> {!! $object['fruit'] !!}</p>
     
     <p> {!! $object['hobby'] !!}</p>
+     
+    @unless ($object['foods']->isEmpty())
+        <h2> Food: </h2>
+        <ul> @foreach($object['foods'] as $food)
+            <li> {!! $food->name !!} </li>
+            @endforeach 
+        </ul>
+    @endunless
 
     {!! HTML::link('whale','Back to whales', ['class'=>'btn btn-primary']) !!}
 

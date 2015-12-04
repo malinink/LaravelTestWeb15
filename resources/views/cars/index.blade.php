@@ -10,7 +10,9 @@
         <th>Identity</th>
         <th>Brand</th>
         <th>Model</th>
+        <th>Year</th>
         <th>Color</th>
+        <th>Price</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -21,7 +23,9 @@
             [$car['id']]) !!}</td>
         <td>{!! $car['brand'] !!}</td>
         <td>{!! $car['model'] !!}</td>
+        <td>{!! $car['year'] !!}</td>
         <td>{!! $car['color'] !!}</td>
+        <td>{!! $car['price'] !!}</td>
         <td>{!! link_to_action('CarsController@edit', 'Edit', [$car['id']], 
             ['class' => 'btn btn-warning']) !!}</td>
         <td>{!! Form::open(['action' => ['CarsController@destroy', $car['id']], 

@@ -24,12 +24,13 @@ class WhaleRequest extends Request
     public function rules()
     {
         return [
-        'identity' => 'required|unique:whales',
+        'identity'  => 'required|unique:whales',
         'firstname' => 'required|string',
-        'lastname' => 'required|string',
-        'sex' => 'required',
-        'fruit' => 'required|string',
-        'hobby' => 'required|string'
+        'lastname'  => 'required|string',
+        'sex'       => 'required',
+        'fruit'     => 'required|string',
+        'hobby'     => 'required|string',
+        'food_list' => 'required'
         ];
     }
 }

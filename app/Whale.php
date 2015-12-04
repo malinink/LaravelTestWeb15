@@ -16,4 +16,16 @@ class Whale extends Model
         'hobby'
     );
     public $timestamps = false;
+    
+    public function foods()
+    {
+    
+        return $this->belongsToMany('App\Food');
+    }
+    
+    public function getFoodListAttribute()
+    {
+        
+        return $this->foods->lists('id')->all();
+    }
 }
