@@ -65,6 +65,7 @@ Route::delete('/fruits/{id}', [
     'as' => 'fruits.destroy', 'uses' => 'Fruits@destroy'
     ]);
 
+Route::resource('collectors', 'Collectors');
 
 Route::get('whale', ['as' => 'whale.index', 'uses' => 'Whales@index']);
 Route::get('whale/create', ['as' => 'whale.create', 'uses' => 'Whales@create']);
