@@ -13,9 +13,12 @@ class CreateBlablaTable extends Migration
     public function up()
     {
         Schema::create('blabla', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('fruit_id');
-            $table->integer('collector_id');
+            
+            $table->unsigned('fruit_id');
+            $table->foreign('fruit_id')->references('id')->on('fruits')->onDelete('cascade');
+            $table->unsigned('collector_id');
+            $table->foreign('collector_id')->references('id')->on('collectors')->onDelete('cascade');
+            
         });
     }
 
