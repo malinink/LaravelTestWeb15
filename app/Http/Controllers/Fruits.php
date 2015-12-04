@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FruitRequest;
 use App\Fruit;
+use App\Collector;
 use App\Http\Controllers\Controller;
 
 class Fruits extends Controller
@@ -64,8 +65,8 @@ class Fruits extends Controller
     public function edit($id)
     {
         $fruit = Fruit::find($id);
-        
-        return view('fruits.edit')->with('fruit', $fruit);
+        $collectors = Collector::lists('name', 'id');
+        return view('fruits.edit')->with(['fruit'=> $fruit, 'collectors' => $collectors]);
     }
     
     /**
@@ -77,7 +78,8 @@ class Fruits extends Controller
      */
     public function update(FruitRequest $request, $id)
     {
-        Fruit::find($id)->update($request->all());
+        Fruit::find($id)->update($request->except(['collectors[]']));
+        Fruit::find($id)->collectors()->sync($request->input('collectors'));
         
         return redirect('fruits')->with('message', 'Fruit updated!');
     }

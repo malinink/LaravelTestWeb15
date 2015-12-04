@@ -30,6 +30,10 @@
 
 {!! Form::label('Condition') !!}
 {!! Form::select('condition', ['Fresh' => 'Fresh', 'Rotten' => 'Rotten'], null, ['class' => 'form-control']) !!}
+
+
+{!! Form::label('collectors', 'Collectors') !!}
+{!! Form::select('collectors[]', $collectors , null, ['multiple' => 'multiple', 'class' => 'form-control']) !!}
 <br>
 {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
 
