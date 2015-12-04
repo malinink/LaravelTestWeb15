@@ -14,9 +14,9 @@ class CreateBlablaTable extends Migration
     {
         Schema::create('blabla', function (Blueprint $table) {
             
-            $table->unsigned('fruit_id');
+            $table->integer('fruit_id')->unsigned();
             $table->foreign('fruit_id')->references('id')->on('fruits')->onDelete('cascade');
-            $table->unsigned('collector_id');
+            $table->integer('collector_id')->unsigned();
             $table->foreign('collector_id')->references('id')->on('collectors')->onDelete('cascade');
             
         });
