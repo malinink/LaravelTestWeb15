@@ -15,7 +15,10 @@ class Collector extends Model
     public function fruits()
     {
         return $this->belongsToMany(
-                'App\Fruit', 'blabla', 'fruit_id', 'collector_id'
-                );
+            'App\Fruit',
+            'blabla',
+            'fruit_id',
+            'collector_id'
+        );
     }
 }
