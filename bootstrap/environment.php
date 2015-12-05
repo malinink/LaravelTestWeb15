@@ -13,8 +13,9 @@
 $env = $app->detectEnvironment(function () {
     if (!getenv('APP_ENV')) {
         $environmentPath = __DIR__ . '/../.env';
-        $setEnv = trim(file_get_contents($environmentPath));
+        
         if (file_exists($environmentPath)) {
+            $setEnv = trim(file_get_contents($environmentPath));
             putenv("APP_ENV=$setEnv");
         }
     }
