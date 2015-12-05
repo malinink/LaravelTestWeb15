@@ -3,41 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
+use App\Sport;
+use Request;
 
 class Sports extends BaseController
 {
     public function index()
-	{
-		return view('sports.index');
-	}
+    {
+        $sports = Sport::all();
+        return view('sports.index', ['sports' => $sports]);
+    }
 
     public function create()
-	{
-		return view('sports.create');
-	}
+    {
+        return view('sports.create');
+    }
 
     public function store()
-	{
-		return view('sports.store');
-	}
+    {
+        $new = Request::only('identity', 'name', 'count');
+        $sport = Sport::create($new);
+        return redirect('sports');
+    }
 
     public function show($id)
-	{
-		return view('sports.show', compact('id'));
-	}
+    {
+        $sport= Sport::find($id);
+        return view('sports.show')->with(['sport' => $sport]);
+    }
 
     public function edit($id)
-	{
-		return view('sports.edit', compact('id'));
-	}
+    {
+        $sport = Sport::find($id);
+        return view('sports.edit')->with(['sport' => $sport]);
+    }
 
     public function update($id)
-	{
-		return view('sports.update', compact('id'));
-	}
+    {
+        $new = Request::only('identity', 'name', 'count');
+        $old = Sport::find($id);
+        $old->update($new);
+        return redirect('sports');
+    }
 
     public function destroy($id)
-	{
-		return view('sports.destroy', compact('id'));
-	}
+    {
+        $sport = Sport::find($id);
+        $sport->delete();
+        return redirect('sports');
+    }
 }

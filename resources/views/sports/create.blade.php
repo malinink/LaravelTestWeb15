@@ -3,7 +3,18 @@
 @section('content')
 
 <h1>CREATE</h1>
-{!! Form::open(['route' => 'sports.index','method' => 'get'])!!}
-{!!Form::submit('Back', ['class' => 'btn btn-default ']) !!}
+{!! Form::open(['action' => 'Sports@store','method' => 'post'])!!}
+
+{!! Form::label('Identity') !!}
+{!! Form::text('identity',null, ['class' => 'form-control']) !!}
+
+{!! Form::label('Name') !!}
+{!! Form::text('name',null, ['class' => 'form-control']) !!}
+
+{!! Form::label('Count') !!}
+{!! Form::text('count',null, ['class' => 'form-control']) !!}
+
+<br>
+{!!Form::submit('Create', ['class' => 'btn btn-primary ']) !!}
 {!!Form::close()!!}
 @endsection
