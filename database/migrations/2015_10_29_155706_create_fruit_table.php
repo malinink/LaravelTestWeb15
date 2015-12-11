@@ -7,13 +7,14 @@ class CreateFruitTable extends Migration
 {
     /**
      * Create table.
-     * 
+     *
      * @return void
      */
     public function up()
     {
         Schema::create(
-            'fruits', function (Blueprint $table) {
+            'fruits',
+            function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('identity');
                 $table->string('name');
@@ -25,7 +26,7 @@ class CreateFruitTable extends Migration
     }
     /**
      * Delete table.
-     * 
+     *
      * @return void
      */
     public function down()

@@ -3,13 +3,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FruitRequest;
 use App\Fruit;
+use App\Collector;
 use App\Http\Controllers\Controller;
 
 class Fruits extends Controller
 {
     /**
      * Show main page with all fruits.
-     * 
+     *
      * @return View
      */
     public function index()
@@ -21,7 +22,7 @@ class Fruits extends Controller
     
     /**
      * Show page with forms for creating a fruit.
-     * 
+     *
      * @return View
      */
     public function create()
@@ -31,7 +32,7 @@ class Fruits extends Controller
     
     /**
      * Store new fruit and redirect.
-     * 
+     *
      * @param FruitRequest $request
      * @return Redirect
      */
@@ -44,7 +45,7 @@ class Fruits extends Controller
     
     /**
      * Show the specifid fruit.
-     * 
+     *
      * @param int $id
      * @return View
      */
@@ -57,20 +58,20 @@ class Fruits extends Controller
     
     /**
      * Show page with forms to edit specified fruit.
-     * 
+     *
      * @param int $id
      * @return View
      */
     public function edit($id)
     {
         $fruit = Fruit::find($id);
-        
-        return view('fruits.edit')->with('fruit', $fruit);
+        $collectors = Collector::lists('name', 'id');
+        return view('fruits.edit')->with(['fruit'=> $fruit, 'collectors' => $collectors]);
     }
     
     /**
      * Update the fruit.
-     * 
+     *
      * @param FruitRequest $request
      * @param int $id
      * @return Redirect
@@ -85,7 +86,7 @@ class Fruits extends Controller
     
     /**
      * Delete specified fruit.
-     * 
+     *
      * @param int $id
      * @return Redirect
      */

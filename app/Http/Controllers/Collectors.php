@@ -37,7 +37,11 @@ class Collectors extends Controller
     
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
         Collector::find($id)->update($request->only('name', 'active'));
+=======
+        Collector::find($id)->update($request->only('name'));
+>>>>>>> origin/feature-68
         return redirect('collectors');
     }
     

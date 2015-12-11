@@ -7,13 +7,14 @@ class AddFieldsToFruits extends Migration
 {
     /**
      * Run the migrations.
-     * 
+     *
      * @return void
      */
     public function up()
     {
         Schema::table(
-            'fruits', function ($table) {
+            'fruits',
+            function ($table) {
                 $table->double('price', 15, 2);
                 $table->string('condition');
             }
@@ -21,13 +22,14 @@ class AddFieldsToFruits extends Migration
     }
     /**
      * Reverse the migrations.
-     * 
+     *
      * @return void
      */
     public function down()
     {
         Schema::table(
-            'fruits', function ($table) {
+            'fruits',
+            function ($table) {
                 $table->dropColumn('price');
                 $table->dropColumn('condition');
             }

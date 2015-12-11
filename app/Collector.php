@@ -9,7 +9,7 @@ class Collector extends Model
     protected $table = 'collectors';
     
     protected $fillable = ['name', 'active'];
-    
+ 
     public $timestamps = false;
     
     public function fruits()
