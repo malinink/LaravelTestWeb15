@@ -8,14 +8,14 @@ class Fruit extends Model
 {
     /**
      * The database table used by the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'fruits';
     
     /**
      * The attributes that are mass assignable.
-     * 
+     *
      * @var array
      */
     protected $fillable = [
@@ -25,7 +25,10 @@ class Fruit extends Model
     public function collectors()
     {
         return $this->belongsToMany(
-                'App\Collector', 'blabla', 'fruit_id', 'collector_id'
-                );
+            'App\Collector',
+            'blabla',
+            'fruit_id',
+            'collector_id'
+        );
     }
 }
