@@ -77,7 +77,8 @@ class Fruits extends Controller
      */
     public function update(FruitRequest $request, $id)
     {
-        Fruit::find($id)->update($request->all());
+        Fruit::find($id)->update($request->except(['collectors_list']));
+        Fruit::find($id)->collectors()->sync($request->input('collectors_list'));
         
         return redirect('fruits')->with('message', 'Fruit updated!');
     }
