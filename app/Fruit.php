@@ -37,4 +37,3 @@ class Fruit extends Model
         return $this->collectors()->lists('id')->all(); // ???
     }
 }
-

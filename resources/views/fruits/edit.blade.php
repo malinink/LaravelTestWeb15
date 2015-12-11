@@ -31,7 +31,7 @@
 {!! Form::label('Condition') !!}
 {!! Form::select('condition', ['Fresh' => 'Fresh', 'Rotten' => 'Rotten'], null, ['class' => 'form-control']) !!}
 
-{!! Form::label('collectors_li', 'Collectors') !!}
+{!! Form::label('collectors_list', 'Collectors') !!}
 {!! Form::select('collectors_list[]', $collectors , null, ['multiple' => 'multiple', 'class' => 'form-control']) !!}
 
 <br>
