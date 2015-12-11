@@ -10,7 +10,7 @@ class Fruits extends Controller
 {
     /**
      * Show main page with all fruits.
-     * 
+     *
      * @return View
      */
     public function index()
@@ -22,7 +22,7 @@ class Fruits extends Controller
     
     /**
      * Show page with forms for creating a fruit.
-     * 
+     *
      * @return View
      */
     public function create()
@@ -32,7 +32,7 @@ class Fruits extends Controller
     
     /**
      * Store new fruit and redirect.
-     * 
+     *
      * @param FruitRequest $request
      * @return Redirect
      */
@@ -45,7 +45,7 @@ class Fruits extends Controller
     
     /**
      * Show the specifid fruit.
-     * 
+     *
      * @param int $id
      * @return View
      */
@@ -58,7 +58,7 @@ class Fruits extends Controller
     
     /**
      * Show page with forms to edit specified fruit.
-     * 
+     *
      * @param int $id
      * @return View
      */
@@ -71,7 +71,7 @@ class Fruits extends Controller
     
     /**
      * Update the fruit.
-     * 
+     *
      * @param FruitRequest $request
      * @param int $id
      * @return Redirect
@@ -86,7 +86,7 @@ class Fruits extends Controller
     
     /**
      * Delete specified fruit.
-     * 
+     *
      * @param int $id
      * @return Redirect
      */
