@@ -27,7 +27,8 @@ class Fruits extends Controller
      */
     public function create()
     {
-        return view('fruits.create');
+        $collectors = Collector::all()->where('active', '1')->lists('name', 'id');
+        return view('fruits.create', ['collectors' => $collectors]);
     }
     
     /**
@@ -37,8 +38,11 @@ class Fruits extends Controller
      * @return Redirect
      */
     public function store(FruitRequest $request)
-    {
-        Fruit::create($request->all());
+    {   
+        $CollectorId = $request->input('collectors_list');
+        Fruit::create($request->except(['collectors_list']))
+            ->collectors()
+            ->attach($CollectorId);
         
         return redirect('fruits')->with('message', 'Fruit created successfully!');
     }
@@ -65,7 +69,9 @@ class Fruits extends Controller
     public function edit($id)
     {
         $fruit = Fruit::find($id);
-        $collectors = Collector::lists('name', 'id');
+        $involvedCollectors = $fruit->collectors->where('active', '0');
+        $activeCollectors = Collector::all()->where('active', '1');
+        $collectors = $activeCollectors->merge($involvedCollectors)->lists('name', 'id')->all();
         return view('fruits.edit')->with(['fruit'=> $fruit, 'collectors' => $collectors]);
     }
     

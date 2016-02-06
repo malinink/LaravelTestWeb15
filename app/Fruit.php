@@ -34,6 +34,6 @@ class Fruit extends Model
     
     public function getCollectorsListAttribute()
     {
-        return $this->collectors()->lists('id')->all(); // ???
+        return $this->collectors->lists('id')->all();
     }
 }
