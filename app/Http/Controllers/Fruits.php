@@ -38,11 +38,11 @@ class Fruits extends Controller
      * @return Redirect
      */
     public function store(FruitRequest $request)
-    {   
-        $CollectorId = $request->input('collectors_list');
+    {
+        $collectorId = $request->input('collectors_list');
         Fruit::create($request->except(['collectors_list']))
             ->collectors()
-            ->attach($CollectorId);
+            ->attach($collectorId);
         
         return redirect('fruits')->with('message', 'Fruit created successfully!');
     }
@@ -84,10 +84,20 @@ class Fruits extends Controller
      */
     public function update(FruitRequest $request, $id)
     {
-        Fruit::find($id)->update($request->except(['collectors_list']));
-        Fruit::find($id)->collectors()->sync($request->input('collectors_list'));
+        $fruit = Fruit::find($id);
+        $fruit->update($request->except(['collectors_list']));
+        $collectors = $request->input('collectors_list');
+        $involvedCollectors = $fruit->collectors->where('active', '0');
+        $activeCollectors = Collector::all()->where('active', '1');
+        $expectedCollectors = $activeCollectors->merge($involvedCollectors)->lists('id')->all();
         
-        return redirect('fruits')->with('message', 'Fruit updated!');
+        if (count(array_values($collectors)) == count(array_intersect(array_values($collectors), $expectedCollectors))
+            ) {
+            $fruit->collectors()->sync($collectors);
+            return redirect('fruits')->with('message', 'Fruit updated!');
+        } else {
+            return redirect()->back()->with('error', 'Wrong parameters');
+        }
     }
     
     /**
