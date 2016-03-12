@@ -20,21 +20,22 @@
             {!!Form::submit('store',array('class' => 'btn btn-default','style' => 'float:left'))!!}
         {!!Form::close()!!}
         <!-- show -->
-        {!!Form::open(['route' => 'music.show','method'=>'get'])!!}
+        {!!Form::open(['route' => array('music.show',$id),'method'=>'get'])!!}
             {!!Form::submit('show',array('class' => 'btn btn-default','style' => 'float:left'))!!}
         {!!Form::close()!!}
         <!-- edit -->
-        {!!Form::open(['route' => 'music.edit','method'=>'get'])!!}
+        {!!Form::open(['route' => array('music.edit',$id),'method'=>'get'])!!}
             {!!Form::submit('edit',array('class' => 'btn btn-default','style' => 'float:left'))!!}
         {!!Form::close()!!}
         <!-- update -->
-        {!!Form::open(['route' => 'music.update','method'=>'put'])!!}
+        {!!Form::open(['route' => array('music.update',$id),'method'=>'put'])!!}
             {!!Form::submit('update',array('class' => 'btn btn-default','style' => 'float:left'))!!}
         {!!Form::close()!!}
         <!-- destroy -->
-        {!!Form::open(['route' => 'music.destroy','method'=>'delete'])!!}
+        {!!Form::open(['route' => array('music.destroy',$id),'method'=>'delete'])!!}
             {!!Form::submit('destroy',array('class' => 'btn btn-default','style' => 'float:left'))!!}
         {!!Form::close()!!}
+        
   
  </body>
 </html>

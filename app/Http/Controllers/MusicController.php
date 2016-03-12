@@ -16,7 +16,8 @@ class MusicController extends Controller
      */
     public function index()
     {
-        return view('music.music');
+        $id='1';
+        return view('music.music')->with('id', $id);
     }
 
     /**
@@ -28,28 +29,25 @@ class MusicController extends Controller
     {
         return view('music.create');
     }
-    public function edit()
+    public function edit($id)
     {
         return view('music.edit');
     }
-    public function show()
+    public function show($id)
     {
+        
         return view('music.show');
     }
     public function store()
     {
         return view('music.store');
     }
-    public function update()
+    public function update($id)
     {
         return view('music.update');
     }
-    public function destroy()
+    public function destroy($id)
     {
         return view('music.destroy');
     }
-    
-    
-    
-    
 }

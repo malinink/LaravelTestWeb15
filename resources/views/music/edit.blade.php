@@ -1,4 +1,4 @@
-@extends ('annlayout')
+@extends ('layoutmusic')
 @section('content')
 edit
 @stop
