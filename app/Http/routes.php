@@ -3,7 +3,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//
 //Ann0808 task#1
+//
 Route::get('/music', ['as' => 'music.music', 'uses' => 'MusicController@index']);
 Route::get('/music/create', ['as' => 'music.create', 'uses' => 'MusicController@create']);
 Route::post('/music', ['as' => 'music.store', 'uses' => 'MusicController@store']);
