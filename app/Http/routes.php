@@ -4,16 +4,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 //
-//Ann0808 task#1
+//Ann0808 
 //
-Route::get('/music', ['as' => 'music.music', 'uses' => 'MusicController@index']);
-Route::get('/music/create', ['as' => 'music.create', 'uses' => 'MusicController@create']);
-Route::post('/music', ['as' => 'music.store', 'uses' => 'MusicController@store']);
-Route::get('/music/{id}', ['as' => 'music.show', 'uses' => 'MusicController@show']);
-Route::get('/music/{id}/edit', ['as' => 'music.edit', 'uses' => 'MusicController@edit']);
-Route::put('/music/{id}', ['as' => 'music.update', 'uses' => 'MusicController@update']);
-Route::delete('/music/{id}', ['as' => 'music.destroy', 'uses' => 'MusicController@destroy']);
- 
+Route::resource('music', 'MusicController');
+
 Route::get(
     'countries/',
     ['as'=> 'countries.index','uses'=>'CountriesController@index']
