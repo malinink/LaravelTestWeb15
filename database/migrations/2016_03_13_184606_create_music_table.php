@@ -28,6 +28,6 @@ class CreateMusicTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mymusic');
+        Schema::drop('music');
     }
 }
