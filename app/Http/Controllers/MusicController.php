@@ -21,7 +21,7 @@ class MusicController extends Controller
     {
         $music=  Music::all();
         //return $music;
-        return view('music.music', compact('music'));
+        return view('music.index', compact('music'));
         
     }
 
@@ -41,7 +41,7 @@ class MusicController extends Controller
         
         $input = Request::all();
         Music::create($input);
-        return redirect('/music');
+        return redirect()->route('music.index');
         
     }
     
@@ -60,13 +60,13 @@ class MusicController extends Controller
         $music = Music::findOrFail($id);
         $input = Request::all();
         $music->update($input);
-        return redirect('/music');
+        return redirect()->route('music.index');
     }
     public function destroy($id)
     {
         $music = Music::findOrFail($id);
         $input = Request::all();
         $music->delete($input);
-        return redirect('/music');
+        return redirect()->route('music.index');
     }
 }

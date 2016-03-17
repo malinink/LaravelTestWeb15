@@ -19,7 +19,7 @@
   </tr>
   @foreach ($music as $m)
   <tr>
-      <th><a href="{{action('MusicController@show',[$m->id])}}">{{$m->id}}</a></th>
+      <th>{!! link_to_action('MusicController@show', $m['id'], [$m['id']]) !!}</th>
     <th>{{$m->singername}}</th>
     <th>{{$m->style}}</th>
     <th>{!!Form::open(['route' => array('music.edit',$m->id),'method'=>'get'])!!}
@@ -33,7 +33,7 @@
 
 </table>
         
-{!! Form::open(['url'=>'/music/create','method'=>'get']) !!}
+{!! Form::open(['route'=>'music.create','method'=>'get']) !!}
   <div class="form-group">
     {!!Form::submit('create new',array('class' => 'btn btn-primary','style' => 'float:left'))!!}
 </div>

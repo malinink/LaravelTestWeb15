@@ -3,7 +3,7 @@
 create
 
 <hr>
-{!! Form::open(['url'=>'/music']) !!}
+{!! Form::open(['route'=>'music.index']) !!}
 <!--singername-->
 <div class="form-group">
 {!! Form::label('singername','Singername:') !!}
