@@ -8,7 +8,7 @@ install:
  - echo "testing" > .env
  - mysql -e 'create database if not exists test;'
  - composer self-update
- - composer install
+ - composer install -vvv
  - chmod -R 777 storage
  - php artisan migrate:install --no-interaction -vvv
 script:
