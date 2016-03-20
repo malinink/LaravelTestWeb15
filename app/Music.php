@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Music extends Model
 {
-    protected $table = 'mymusic';
+    protected $table = 'music';
     protected $fillable = [
       'singername',
         'style',
