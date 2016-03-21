@@ -14,6 +14,11 @@ create
 {!! Form::label('style','Style:') !!}
 {!! Form::text('style',null,['class'=>'form-control']) !!}
 </div>
+<!--deskr-->
+<div class="form-group">
+{!! Form::label('instrument','instrument:') !!}
+{!! Form::text('instrument',null,['class'=>'form-control']) !!}
+</div>
 <div class="form-group">
     {!!Form::submit('create',array('class' => 'btn btn-primary','style' => 'float:left'))!!}
 </div>

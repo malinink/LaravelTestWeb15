@@ -6,4 +6,6 @@ Singername: {{$music->singername}}
 <hr>
 Style: {{$music->style}}
 <hr>
+instrument: {{$music->instrument}}
+<hr>
 @stop
