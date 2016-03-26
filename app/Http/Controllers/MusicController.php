@@ -1,11 +1,14 @@
 <?php
 
+
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use Request;
+use \App\Music;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class MusicController extends Controller
 {
@@ -16,8 +19,10 @@ class MusicController extends Controller
      */
     public function index()
     {
-        $id='1';
-        return view('music.music')->with('id', $id);
+        $music=  Music::all();
+        //return $music;
+        return view('music.index', compact('music'));
+        
     }
 
     /**
@@ -27,27 +32,41 @@ class MusicController extends Controller
      */
     public function create()
     {
-        return view('music.create');
-    }
-    public function edit($id)
-    {
-        return view('music.edit');
-    }
-    public function show($id)
-    {
         
-        return view('music.show');
+        return view('music.create');
+        
     }
     public function store()
     {
-        return view('music.store');
+        
+        $input = Request::all();
+        Music::create($input);
+        return redirect()->route('music.index');
+        
+    }
+    
+    public function show($id)
+    {
+        $music = Music::findOrFail($id);
+        return view('music.show', compact('music'));
+    }
+    public function edit($id)
+    {
+        $music = Music::findOrFail($id);
+        return view('music.edit', compact('music'));
     }
     public function update($id)
     {
-        return view('music.update');
+        $music = Music::findOrFail($id);
+        $input = Request::all();
+        $music->update($input);
+        return redirect()->route('music.index');
     }
     public function destroy($id)
     {
-        return view('music.destroy');
+        $music = Music::findOrFail($id);
+        $input = Request::all();
+        $music->delete($input);
+        return redirect()->route('music.index');
     }
 }

@@ -13,7 +13,7 @@
         @yield('content')
         </h1>
             <!-- back -->
-        {!!Form::open(['route' => 'music.music','method'=>'get'])!!}
+        {!!Form::open(['route' => 'music.index','method'=>'get'])!!}
             {!!Form::submit('back to music',array('class' => 'btn btn-default','style' => 'float:left'))!!}
         {!!Form::close()!!}
         </div>
