@@ -3,11 +3,12 @@
 @section('body')
 <h1>Fruits Edit.</h1>
 
-@if(count($errors) > 0)
+@if (count($errors) || session('error'))
     <div class='alert alert-warning'>
         @foreach($errors->all() as $error)
         <p>{{ $error }}</p>
-    @endforeach
+        @endforeach
+        {{ session('error') }}
     </div>
 @endif
 
@@ -30,6 +31,10 @@
 
 {!! Form::label('Condition') !!}
 {!! Form::select('condition', ['Fresh' => 'Fresh', 'Rotten' => 'Rotten'], null, ['class' => 'form-control']) !!}
+
+{!! Form::label('collectors_list', 'Collectors') !!}
+{!! Form::select('collectors_list[]', $collectors , null, ['multiple' => 'multiple', 'class' => 'form-control']) !!}
+
 <br>
 {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
 
