@@ -25,7 +25,9 @@ class CreateNewGameRequest extends Request
     {
         return [
             'title' => 'required|min:1',
-            'description' => 'required|min:100'
+            'description' => 'required|min:100',
+            'genre' => 'required|min:2|max:100',
+            'published' =>'required|integer'
         ];
     }
 }

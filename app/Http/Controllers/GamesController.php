@@ -26,7 +26,9 @@ class GamesController extends Controller
 
     public function store(CreateNewGameRequest $request)
     {
-        Games::create($request->all());
+       Games::create($request->all());
+
+       \Session::flash('flash message', 'You added the new game!');
 
        return redirect('games');
     }
@@ -40,6 +42,7 @@ class GamesController extends Controller
     public function edit($id)
     {
         $game = Games::findOrFail($id);
+
         return view("games.edit", compact("game"));
     }
 
@@ -48,12 +51,18 @@ class GamesController extends Controller
         $game = Games::findOrFail($id);
 
         $game->update($request->all());
+
+
+        \Session::flash('flash message', 'You updated the game!');
+
         return redirect('games');
     }
 
     public function destroy($id)
     {
         $game = Games::findOrFail($id);
+
+        \Session::flash('flash message', 'You deleted the game!');
 
         $game->delete();
         return redirect('games');

@@ -16,6 +16,16 @@
          {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
     </div>
 
+    <div class="form-group">
+        {!! Form::label('Genre') !!}
+        {!! Form::select('genre', ['RPG' => 'RPG', 'Shooter' => 'Shooter', 'Puzzle' => 'Puzzle'], null, ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('published', 'Published:') !!}
+        {!! Form::text('published', null, ['class' => 'form-control']) !!}
+    </div>
+
     {!! Form::submit('Update', ["class"=>"btn btn-success"]) !!}
     {!! HTML::linkAction('GamesController@index', 'Back', [], ['class' => 'btn btn-default']) !!}
 
